@@ -1,0 +1,51 @@
+#!/bin/bash
+function add_repo {
+    mkdir $2/$1 && cd $1 && git init --bare
+}
+
+function del_repo {
+    cd $2 && rm -rf $1
+}
+
+function list_repos {
+	cd $1 && ls | grep "..*\.git" --color=none
+}
+
+LC_ALL=C
+REPO=$2.git
+ROOT='/home/git'
+case "$1" in
+	'list')
+		list_repos $ROOT
+		;;
+	'add')
+		echo "Adding repository $REPO"
+		if [ -d "$ROOT/$REPO" ]; then
+			echo "A repository under same name exists. Try different name."
+		else
+			if [[ "$2" == [a-zA-Z]*([a-zA-Z0-9\_]) ]]; then
+				add_repo $REPO $ROOT
+			else
+				echo "Name Error: Repo name must start with a letter and can only include numbers, letters and underscores."
+			fi
+		fi
+		;;
+	'delete')
+		echo "Removing repository $REPO"
+		if [ -d "$ROOT/$REPO" ]; then
+			if [[ "$2" == [a-zA-Z]*([a-zA-Z0-9\_]) ]]; then
+				del_repo $REPO $ROOT
+			else
+				echo "Name Error: Repo name must start with a letter and can only include numbers, letters and underscores."
+			fi
+		else
+			echo "Repository $REPO does not exists."
+		fi
+		;;
+	*)
+		echo "Syntax error"
+		echo
+		echo "	Usage: gitry [add|delete|list] REPOSITORY"
+		echo
+		;;
+esac
