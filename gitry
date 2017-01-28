@@ -25,6 +25,8 @@ case "$1" in
 		else
 			if [[ "$2" == [a-zA-Z]*([a-zA-Z0-9\_]) ]]; then
 				add_repo $REPO $ROOT
+				echo "Run follwoing command in client git repo:"
+				echo "	$ git init && git remote add origin git@localhost:${REPO}"
 			else
 				echo "Name Error: Repo name must start with a letter and can only include numbers, letters and underscores."
 			fi

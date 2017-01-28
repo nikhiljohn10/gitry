@@ -18,13 +18,24 @@ To access gitry, ssh in to localhost using following command
 $ ssh git@localhost # the install.sh adds pubic key of your system to server, hence no password needed
 ```
 
-To use gitry after logging in 
+To use gitry after logging in to server
 ```
 $ gitry list # list all the git repos added to server
 $ gitry add <repository> # add a new repo in to server (do not use .git in repo name)
 $ gitry delete <repository> # delete a repo from server (do not use .git in repo name)
 
 ```
+
+To access server from client
+```
+$ git clone git@localhost:<repository>.git
+
+# or 
+
+$ git init && git remote add origin git@localhost:<repository>.git
+
+```
+
 
 ### Possibles errors
 
