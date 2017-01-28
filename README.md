@@ -5,10 +5,10 @@ A bash program to deploy git server for Ubuntu based operating systems of 64bit 
 
 Simply run the following commands
 ```
-sudo apt-get install -y wget
-wget https://github.com/nikhiljohn10/gitry/archive/master.zip -O temp.zip
-unzip temp.zip && rm temp.zip
-cd gitry-master && sudo ./install.sh
+$ sudo apt-get install -y wget
+$ wget https://github.com/nikhiljohn10/gitry/archive/master.zip -O temp.zip
+$ unzip temp.zip && rm temp.zip
+$ cd gitry-master && sudo ./install.sh
 ```
 
 ### Usage
@@ -21,8 +21,8 @@ $ ssh git@localhost # the install.sh adds pubic key of your system to server, he
 To use gitry after logging in 
 ```
 $ gitry list # list all the git repos added to server
-$ gitry add <repositry> # add a new repo in to server (do not use .git in repo name)
-$ gitry delete <repositry> # delete a repo from server (do not use .git in repo name)
+$ gitry add <repository> # add a new repo in to server (do not use .git in repo name)
+$ gitry delete <repository> # delete a repo from server (do not use .git in repo name)
 
 ```
 
